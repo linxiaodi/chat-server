@@ -6,6 +6,9 @@ const user = require('./routers/user/')
 const info = require('./routers/info/')
 const chat = require('./routers/chat')
 const api = require('./routers/discovery/')
+const cors = require('cors')
+
+app.use(cors())
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))

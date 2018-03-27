@@ -16,10 +16,13 @@ Router.post('/register', function (req, res) {
 
 Router.post('/login', function (req, res) {
   (async () => {
-    console.log(req.session)
-    const result = await login(req.body, req)
-    const { _id } = result.data
-    req.session._id = _id
+    const { username, password } = req.body
+    const result = await login({ username, password })
+    console.log(result.code === 2000)
+    if (result.code === 2000) {
+      const { _id } = result.data
+      req.session._id = _id
+    }
     res.json(result)
   })()
 })

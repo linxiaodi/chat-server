@@ -31,6 +31,9 @@ class User {
           msg: '登陆成功',
           data: resData
         }
+      } else {
+        console.log(123456)
+        return pwdError
       }
     }
     return pwdError
