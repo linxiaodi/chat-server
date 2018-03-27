@@ -22,7 +22,6 @@ class User {
 
   static async login(data) {
     const res = await findUserByUsername(data)
-    console.log(res)
     if (res) {
       if (data.password === res.password) {
         const { password, ...resData } = res._doc
@@ -32,7 +31,6 @@ class User {
           data: resData
         }
       } else {
-        console.log(123456)
         return pwdError
       }
     }

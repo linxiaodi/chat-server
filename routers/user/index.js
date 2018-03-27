@@ -18,7 +18,6 @@ Router.post('/login', function (req, res) {
   (async () => {
     const { username, password } = req.body
     const result = await login({ username, password })
-    console.log(result.code === 2000)
     if (result.code === 2000) {
       const { _id } = result.data
       req.session._id = _id
@@ -36,7 +35,6 @@ Router.get('/init', auth, function (req, res) {
 })
 
 Router.get('/logout', function (req, res) {
-  console.log(req.session._id)
   req.session._id = ''
   res.json({
     code: 2000,
